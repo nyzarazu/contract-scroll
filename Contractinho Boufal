@@ -1,0 +1,25 @@
+/*
+MaghrébinFrustré
+ */
+
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
+
+contract Boufalinho {
+    uint16 public x = 0;
+    bool public tradingEnabled = false; 
+
+    modifier whenTradingEnabled() {
+        require(tradingEnabled, "Trading is not enabled");
+        _;
+    }
+
+    function enableTrading() public {
+        tradingEnabled = true;
+    }
+
+    function increaseCounter() public whenTradingEnabled {
+        x += 1;
+    }
+}
+
